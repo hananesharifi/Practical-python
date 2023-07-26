@@ -1,0 +1,30 @@
+def compare(string1, string2):
+    min1 = min(len(string1), len(string2))
+    new_string1 = string1
+    new_string2 = string2
+
+    while min1 > 0:
+        if ord(new_string1[0]) < ord(new_string2[0]):
+            new_string1 = new_string1[1:]
+            new_string1 = new_string1[::-1]
+            new_string2 = new_string2[::-1]
+
+        elif ord(new_string2[0]) < ord(new_string1[0]):
+            new_string2 = new_string2[1:]
+            new_string1 = new_string1[::-1]
+            new_string2 = new_string2[::-1]
+
+        else:
+            new_string1 = new_string1[1:]
+            new_string2 = new_string2[1:]
+            new_string1 = new_string1[::-1]
+            new_string2 = new_string2[::-1]
+
+
+        min1 = min(len(new_string1), len(new_string2))
+    if len(new_string1) == 0 and len(new_string2) > 0:
+        return  "'" + new_string2[::-1] + "'"
+    elif len(new_string2) == 0 and len(new_string1) > 0:
+        return "'" + new_string1[::-1] + "'"
+    else:
+        return "'Both strings are empty!'"
